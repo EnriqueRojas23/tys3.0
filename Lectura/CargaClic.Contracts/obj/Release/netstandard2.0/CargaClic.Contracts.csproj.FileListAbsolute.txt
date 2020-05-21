@@ -1,0 +1,10 @@
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\bin\Release\netstandard2.0\CargaClic.Contracts.deps.json
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\bin\Release\netstandard2.0\CargaClic.Contracts.dll
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\bin\Release\netstandard2.0\CargaClic.Contracts.pdb
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\bin\Release\netstandard2.0\Common.dll
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\bin\Release\netstandard2.0\Common.pdb
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\obj\Release\netstandard2.0\CargaClic.Contracts.AssemblyInfoInputs.cache
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\obj\Release\netstandard2.0\CargaClic.Contracts.AssemblyInfo.cs
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\obj\Release\netstandard2.0\CargaClic.Contracts.csproj.CopyComplete
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\obj\Release\netstandard2.0\CargaClic.Contracts.dll
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Lectura\CargaCLic.Contracts\obj\Release\netstandard2.0\CargaClic.Contracts.pdb

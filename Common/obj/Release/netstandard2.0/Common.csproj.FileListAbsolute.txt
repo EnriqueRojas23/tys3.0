@@ -1,0 +1,8 @@
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\bin\Release\netstandard2.0\Common.deps.json
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\bin\Release\netstandard2.0\Common.dll
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\bin\Release\netstandard2.0\Common.pdb
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\obj\Release\netstandard2.0\Common.csprojAssemblyReference.cache
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\obj\Release\netstandard2.0\Common.AssemblyInfoInputs.cache
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\obj\Release\netstandard2.0\Common.AssemblyInfo.cs
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\obj\Release\netstandard2.0\Common.dll
+D:\RIA\RIA\2020\TYS\Angular-Clientes\ProjectAvengers-Despacho\ProjectAvengers-Despacho\Common\obj\Release\netstandard2.0\Common.pdb
