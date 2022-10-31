@@ -19,4 +19,9 @@ namespace CargaClic.Repository
         public string idclientes {get;set;}
 
     }
+    public class RolUsuario
+    {
+        public int usr_int_id {get;set;}
+        public int rol_int_id {get;set;}
+    }
 }

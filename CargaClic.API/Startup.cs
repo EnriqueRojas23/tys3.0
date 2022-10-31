@@ -16,32 +16,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using CargaClic.API.Data;
 using CargaClic.Handlers.Seguridad;
-
-using CargaClic.Data.Contracts.Parameters.Seguridad;
 using CargaClic.Data.Interface;
 using CargaClic.Domain.Seguridad;
 using Common;
-using CargaClic.Contracts.Parameters.Prerecibo;
-using CargaClic.Handlers.Precibo;
 using CargaClic.Domain.Mantenimiento;
-using CargaClic.Domain.Prerecibo;
-using CargaClic.Contracts.Parameters.Mantenimiento;
 using CargaClic.Handlers.Mantenimiento;
-
-using CargaClic.Contracts.Parameters.Inventario;
-using CargaClic.Handlers.Inventario;
-using CargaClic.Domain.Inventario;
-
 using CargaClic.ReadRepository.Interface.Mantenimiento;
-using CargaClic.ReadRepository.Interface.Inventario;
-using CargaClic.ReadRepository.Repository.Inventario;
 using CargaClic.ReadRepository.Interface.Despacho;
 using CargaClic.ReadRepository.Repository.Despacho;
 using CargaClic.Domain.Despacho;
-using CargaClic.ReadRepository.Interface.Facturacion;
-using CargaClic.Domain.Facturacion;
 using CargaClic.Repository.Interface;
 using CargaClic.Repository;
+using CargaClic.Domain.Seguimiento;
+using Common.QueryHandlers;
+using CargaClic.Data.Contracts.Parameters.Seguridad;
+using CargaClic.ReadRepository.Repository.Inventario;
+using CargaClic.ReadRepository.Interface;
 
 namespace CargaClic.API
 {
@@ -55,7 +45,10 @@ namespace CargaClic.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             services.AddDbContext<DataContextSecurity>(x=>x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
              services.AddDbContext<DataContext>(x=>x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
              services.AddSingleton(_ => Configuration);
              services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
              services.AddCors();
@@ -68,33 +61,51 @@ namespace CargaClic.API
              services.AddScoped<IRepository<RolPagina>,Repository<RolPagina>>();
              services.AddScoped<IRepository<Pagina>,Repository<Pagina>>();
              services.AddScoped<IRepository<RolUser>,Repository<RolUser>>();
+             services.AddScoped<IAuthRepository,AuthRepository>();
+
+             services.AddScoped<IRepository<Archivo>,Repository<Archivo>>();
              services.AddScoped<IRepository<Estado>,Repository<Estado>>();
+             services.AddScoped<IRepository<Vehiculo>,Repository<Vehiculo>>();
+             services.AddScoped<IRepository<Chofer>,Repository<Chofer>>();
+             services.AddScoped<IRepository<Proveedor>,Repository<Proveedor>>();
+             services.AddScoped<IRepository<OrdenTrabajo>,Repository<OrdenTrabajo>>();
+             services.AddScoped<IRepository<Manifiesto>,Repository<Manifiesto>>();
+             
+             services.AddScoped<IRepository<Distrito>,Repository<Distrito>>();
+             services.AddScoped<IRepository<Direccion>,Repository<Direccion>>();
+             services.AddScoped<IRepository<TarifaProveedor>,Repository<TarifaProveedor>>();
+
+              
+
+
+            services.AddScoped<IRepository<Sustento>,Repository<Sustento>>();
+            services.AddScoped<IRepository<SustentoDetalle>,Repository<SustentoDetalle>>();
+            services.AddScoped<IRepository<TipoSustento>,Repository<TipoSustento>>();
+            services.AddScoped<IRepository<TipoDocumentoSustento>,Repository<TipoDocumentoSustento>>();
+
+
+
+             services.AddScoped<IRepository<GuiaRemisionBlanco>,Repository<GuiaRemisionBlanco>>();
+             
+             services.AddScoped<ISeguimientoRepository,SeguimientoRepository>();
+             services.AddScoped<ISeguimientoReadRepository,SeguimientoReadRepository>();
+             
+             services.AddScoped<IMantenimientoReadRepository,MantenimientoReadRepository>();
+             services.AddScoped<IRepository<CargaMasivaDetalle>,Repository<CargaMasivaDetalle>>();
 
              
-            services.AddScoped<ISeguimientoRepository,SeguimientoRepository>();
-             services.AddScoped<IMantenimientoRepository,MantenimientoRepository>();
-             services.AddScoped<IAuthRepository,AuthRepository>();
+       
          
      
-            services.AddScoped<IRepository<Proveedor>, Repository<Proveedor>>();
-            services.AddScoped<IRepository<Vehiculo>, Repository<Vehiculo>>();
-            services.AddScoped<IRepository<Huella>, Repository<Huella>>();
-            services.AddScoped<IRepository<Producto>, Repository<Producto>>();
-            services.AddScoped<IRepository<Chofer>, Repository<Chofer>>();
+    
             services.AddScoped<IRepository<ValorTabla>, Repository<ValorTabla>>();
-            services.AddScoped<IRepository<Preliquidacion>, Repository<Preliquidacion>>();
-            services.AddScoped<IRepository<Almacen>, Repository<Almacen>>();
-
+            services.AddScoped<IRepository<Cuadrilla>, Repository<Cuadrilla>>();
+  
             
-           
-            services.AddScoped<IInventarioReadRepository,InventarioReadRepository>();
-            services.AddScoped<IRepository<OrdenSalidaDetalle>,Repository<OrdenSalidaDetalle>>();
             services.AddScoped<IDespachoReadRepository,DespachoReadRepository>();
-            services.AddScoped<IFacturacionReadRepository,FacturacionReadRepository>();
-            services.AddScoped<IRepository<Documento>,Repository<Documento>>();
-            services.AddScoped<IRepository<Propietario>,Repository<Propietario>>();
-            services.AddScoped<IRepository<Area>,Repository<Area>>();
-            services.AddScoped<IRepository<InventarioGeneral>,Repository<InventarioGeneral>>();
+            
+            services.AddScoped<IQueryHandler<ListarMenusxRolParameter>,ListarMenusxRolQuery>();
+
                  
 
              

@@ -1,6 +1,5 @@
 
 using CargaClic.Domain.Despacho;
-using CargaClic.Domain.Prerecibo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

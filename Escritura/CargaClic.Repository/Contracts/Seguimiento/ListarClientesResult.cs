@@ -12,4 +12,13 @@ namespace CargaClic.Repository.Contracts.Seguimiento
         // public bool activo { get; set; }
         // public string moneda { get; set; }
     }
+     public class ListarProveedorxClienteDto
+    {
+        public int idproveedorcliente { get; set; }
+        public int idproveedor { get; set; }
+        public string razonsocial { get; set; }
+        public int idcliente { get; set; }
+
+
+    }
 }

@@ -7,7 +7,6 @@ namespace CargaClic.Domain.Mantenimiento
 {
     public class Estado : Entity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string NombreEstado { get; set; }
         public string Descripcion { get; set; }

@@ -14,6 +14,7 @@ namespace CargaClic.Data.Interface
         Task<User> Update(User user);
         Task<User> UpdateEstadoId(User user);
         Task<GetUsuario> Login(string username, string password);
+        Task<IEnumerable<RolUsuario>> GetRolUsuario(int UserId);
         Task<User> Get(int usuarioid);
         Task<bool> UserExists(string username);
     }

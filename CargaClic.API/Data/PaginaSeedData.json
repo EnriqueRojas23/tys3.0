@@ -11,7 +11,7 @@
     "Codigo":"MN002",
     "CodigoPadre" : "",
     "Descripcion" : "Dashboard",
-    "Link" : "['/dashboard']",
+    "Link" : "['/dashboard1']",
     "Nivel" : 1,
     "Orden" : 0,
     "Icono" :"Casita"

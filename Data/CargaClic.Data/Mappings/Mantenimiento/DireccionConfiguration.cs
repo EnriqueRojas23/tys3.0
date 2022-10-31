@@ -8,10 +8,10 @@ namespace CargaClic.Data.Mappings.Mantenimiento
     {
         public void Configure(EntityTypeBuilder<Direccion> builder)
         {
-            builder.ToTable("Direccion","Mantenimiento");
+            builder.ToTable("Direccion","Seguimiento");
             builder.HasKey(x=>x.iddireccion);
-            builder.Property(x=>x.codigo).HasMaxLength(10).IsRequired();
-            builder.Property(x=>x.direccion).HasMaxLength(50).IsRequired();
+          
+
         }
     }
 }

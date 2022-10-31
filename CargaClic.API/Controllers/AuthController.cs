@@ -24,16 +24,17 @@ namespace CargaClic.API.Controllers
         private readonly IAuthRepository _repo;
         private readonly IRepository<RolUser> _repo_Roluser;
         private readonly IConfiguration _config;
-        
+          private readonly IQueryHandler<ListarMenusxRolParameter> _repo_Menu;
 
         public AuthController(IAuthRepository repo
         , IRepository<RolUser> repo_roluser
         , IConfiguration config
+        , IQueryHandler<ListarMenusxRolParameter>  repo_menu
         
         )
         {
             _config = config;
-            
+            _repo_Menu = repo_menu;
             _repo = repo;
             _repo_Roluser = repo_roluser;
         }
@@ -45,42 +46,49 @@ namespace CargaClic.API.Controllers
             var auxPantallas = new List<ListarMenusxRolDto>();
 
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
-
+            
             if (userFromRepo.usr_int_pwdvalido == 0)
                 return Unauthorized();
            
 
-                
-
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.usr_int_id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.usr_str_email)
+                new Claim(ClaimTypes.Name, userFromRepo.usr_str_red)
             };
 
-           
-              
-            //  //Eliminar duplicados [multiples Roles]
-            //  foreach (var item in pantallas)
-            //  {
-            //      if(auxPantallas.Where(x=>x.Id == item.Id).SingleOrDefault() == null)
-            //      {
-            //             auxPantallas.Add(item);
-            //      }
-            //  }
+            var roles =  await _repo.GetRolUsuario(userFromRepo.usr_int_id);
 
-            // List<ListarMenusxRolDto> final = new List<ListarMenusxRolDto>();
 
-            // foreach (var item in auxPantallas.Where(x=>x.srp_seleccion == "1").OrderBy(x=>x.Orden))
-            // {   
-            //     if (item.Nivel=="1")
-            //     {
-            //         item.submenu = new List<ListarMenusxRolDto>();
-            //         item.submenu.AddRange(auxPantallas.Where(x=>x.CodigoPadre == item.Codigo && x.Nivel == "2" && x.srp_seleccion=="1").OrderBy(x=>x.Orden).ToList());
-            //         if(final.Where(x=>x.Id == item.Id).SingleOrDefault() == null)
-            //         final.Add(item);
-            //     }
-            // }
+            foreach (var rol in roles)
+            {
+                ListarMenusxRolParameter Param = new  ListarMenusxRolParameter
+                {
+                 idRol = rol.rol_int_id
+                };
+                pantallas.AddRange(  ((ListarMenusxRolResult)  _repo_Menu.Execute(Param)).Hits  );
+            }
+
+            foreach (var item in pantallas)
+             {
+                 if(auxPantallas.Where(x=>x.pag_int_id == item.pag_int_id).SingleOrDefault() == null)
+                 {
+                        auxPantallas.Add(item);
+                 }
+             }
+
+            List<ListarMenusxRolDto> final = new List<ListarMenusxRolDto>();
+            var todos = auxPantallas.Where(x=>x.srp_seleccion == "1").OrderBy(x=>x.pag_int_secuencia);
+            foreach (var item in todos)
+            {   
+                if (item.pag_int_nivel == 1 && item.version == 2)
+                {
+                    item.submenu = new List<ListarMenusxRolDto>();
+                    item.submenu.AddRange(auxPantallas.Where(x=>x.pag_str_codmenu_padre == item.pag_str_codmenu && x.pag_int_nivel == 2 && x.srp_seleccion=="1").OrderBy(x=>x.pag_int_secuencia).ToList());
+                    if(final.Where(x=>x.pag_int_id == item.pag_int_id).SingleOrDefault() == null)
+                    final.Add(item);
+                }
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
              .GetBytes(_config.GetSection("AppSettings:Token").Value));
@@ -99,7 +107,9 @@ namespace CargaClic.API.Controllers
              var token = tokenHandler.CreateToken(tokenDescriptor);
 
              return Ok(new {
-                 menu = userFromRepo,
+                 menu = final,
+                 id_usr  = userFromRepo.usr_int_id,
+                 user = userFromRepo,
                  token = tokenHandler.WriteToken(token)
              });
 

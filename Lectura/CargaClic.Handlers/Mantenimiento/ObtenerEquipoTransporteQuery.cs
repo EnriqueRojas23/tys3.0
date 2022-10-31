@@ -3,9 +3,7 @@
 using System.Data;
 using System.Linq;
 using CargaClic.Contracts.Parameters.Mantenimiento;
-using CargaClic.Contracts.Parameters.Prerecibo;
 using CargaClic.Contracts.Results.Mantenimiento;
-using CargaClic.Contracts.Results.Prerecibo;
 using Common.QueryContracts;
 using Common.QueryHandlers;
 using Dapper;

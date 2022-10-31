@@ -8,6 +8,10 @@ namespace CargaClic.Domain.Seguridad
         public int RolId { get; set; }
         public Rol Rol { get; set; }
         public User User { get; set; }
+
+
+       
+
         
     }
 }

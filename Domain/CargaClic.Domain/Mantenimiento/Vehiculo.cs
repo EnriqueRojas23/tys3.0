@@ -1,23 +1,21 @@
+using System.ComponentModel.DataAnnotations;
 using CargaClic.Common;
 
 namespace CargaClic.Domain.Mantenimiento
 {
    public class Vehiculo : Entity
   {
-        public int Id { get; set; }
-        public string Placa { get; set; }
-        public int? TipoId { get; set; }
-        public int? MarcaId { get; set; }
-        public int? ModeloId { get; set; }
-        public int? AnioId { get; set; }
-        public int? ColorId { get; set; }
-        public int? CombustibleId { get; set; }
-        public string Regmtc { get; set; }
-        public string Confveh { get; set; }
-        public decimal? CargaUtil { get; set; }
-        public decimal? PesoBruto { get; set; }
-        public string SerieMotor { get; set; }
-        public string Kilometraje { get; set; }
+        [Key]
+        public int idvehiculo { get; set; }
+        public string placa { get; set; }
+        public int? idtipo { get; set; }
+        public int? idmarca { get; set; }
+        public int? idmodelo {get;set;}
+         public string confveh { get; set; }
+         public decimal? pesobruto { get; set; }
+         public decimal? cargautil {get;set;}
+         public bool activo {get;set;}
+         public int idproveedor  {get;set;}
 
     }
 }

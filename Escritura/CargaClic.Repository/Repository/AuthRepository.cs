@@ -60,6 +60,22 @@ namespace Common
             }
         }
 
+        public async Task<IEnumerable<RolUsuario>> GetRolUsuario(int UserId)
+        {
+            var parametros = new DynamicParameters();
+            parametros.Add("usr_int_id", dbType: DbType.String, direction: ParameterDirection.Input, value: UserId);
+            using (IDbConnection conn = Connection)
+            {
+                string sQuery = "[seguridad].[pa_listar_rolusuario]";
+                var result = await conn.QueryAsync<RolUsuario>(sQuery,
+                                                                           parametros
+                                                                          ,commandType:CommandType.StoredProcedure
+                  );
+               
+                return result.ToList();
+            }
+        }
+
         public async Task<GetUsuario> Login(string username, string password)
         {
 

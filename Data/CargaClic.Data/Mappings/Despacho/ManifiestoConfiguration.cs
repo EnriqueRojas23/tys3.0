@@ -1,6 +1,5 @@
 
-using CargaClic.Domain.Despacho;
-using CargaClic.Domain.Prerecibo;
+using CargaClic.Domain.Seguimiento;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,9 +9,9 @@ namespace CargaClic.Data.Mappings.Prerecibo
     {
         public void Configure(EntityTypeBuilder<Manifiesto> builder)
         {
-            builder.ToTable("Manifiesto","Despacho");
-            builder.HasKey(x=>x.Id);
-            builder.Property(x=>x.NumManifiesto).HasMaxLength(10);
+            builder.ToTable("Manifiesto","Seguimiento");
+            builder.HasKey(x=>x.idmanifiesto);
+            builder.Property(x=>x.numhojaruta).HasMaxLength(10);
         }
     }
 }

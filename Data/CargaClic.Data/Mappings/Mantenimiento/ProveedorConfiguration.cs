@@ -8,8 +8,8 @@ namespace CargaClic.Data.Mappings.Mantenimiento
     {
         public void Configure(EntityTypeBuilder<Proveedor> builder)
         {
-            builder.ToTable("Proveedor","Mantenimiento");
-            builder.HasKey(x=>x.Id);
+            builder.ToTable("Proveedor","Pago");
+            builder.HasKey(x=>x.idproveedor);
             builder.Property(x=>x.RazonSocial).HasMaxLength(50).IsRequired();
             builder.Property(x=>x.Ruc).HasMaxLength(11).IsRequired();
         }

@@ -8,13 +8,8 @@ namespace CargaClic.Data.Mappings.Mantenimiento
     {
         public void Configure(EntityTypeBuilder<Vehiculo> builder)
         {
-            builder.ToTable("Vehiculo","Mantenimiento");
-            builder.HasKey(x=>x.Id);
-            builder.Property(x=>x.Placa).HasMaxLength(50).IsRequired();
-            builder.Property(x=>x.MarcaId).HasMaxLength(11).IsRequired();
-            builder.Property(x=>x.CargaUtil).HasMaxLength(11).IsRequired();
-            builder.Property(x=>x.PesoBruto).HasMaxLength(11).IsRequired();
-            
+            builder.ToTable("Vehiculo","Pago");
+            builder.HasKey(x=>x.idvehiculo);
 
         }
     }

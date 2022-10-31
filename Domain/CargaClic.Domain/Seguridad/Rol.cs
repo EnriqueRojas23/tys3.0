@@ -15,5 +15,6 @@ namespace CargaClic.Domain.Seguridad
         public ICollection<RolPagina> RolPaginas {get;set;}
         public ICollection<RolUser> RolUser {get;set;}
         
+
     }
 }

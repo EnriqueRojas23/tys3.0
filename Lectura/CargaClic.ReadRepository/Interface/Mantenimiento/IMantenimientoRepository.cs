@@ -6,7 +6,7 @@ using CargaClic.ReadRepository.Contracts.Mantenimiento.Results;
 
 namespace CargaClic.ReadRepository.Interface.Mantenimiento
 {
-    public interface IMantenimientoRepository
+    public interface IMantenimientoReadRepository
     {
          Task<IEnumerable<GetAllHuelladetalleResult>> GetAllHuelladetalle(int HuellaId);
          Task<GetProductoResult> GetProducto(Guid ProductoId);
@@ -21,7 +21,9 @@ namespace CargaClic.ReadRepository.Interface.Mantenimiento
          Task<IEnumerable<GetAllProvincias>> GetAllProvincias(int DepartamentoId);
          Task<IEnumerable<GetAllDistritos>> GetAllDistritos(int ProvinciaId);
 
-         //Task<IEnumerable<GetAll
+         Task<IEnumerable<GetAllTarifarioProveedorResult>> GetAllTarifarioProveedor(int idcliente);
+         
+         
 
 
 

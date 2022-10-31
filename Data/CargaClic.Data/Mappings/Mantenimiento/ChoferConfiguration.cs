@@ -8,11 +8,11 @@ namespace CargaClic.Data.Mappings.Mantenimiento
     {
         public void Configure(EntityTypeBuilder<Chofer> builder)
         {
-            builder.ToTable("Chofer","Mantenimiento");
-            builder.HasKey(x=>x.Id);
-            builder.Property(x=>x.NombreCompleto).HasMaxLength(50).IsRequired();
-            builder.Property(x=>x.Dni).HasMaxLength(11).IsRequired();
-            builder.Property(x=>x.Brevete).HasMaxLength(11).IsRequired();
+            builder.ToTable("Chofer","Seguimiento");
+            builder.HasKey(x=>x.idchofer);
+            builder.Property(x=>x.nombrechofer).HasMaxLength(50).IsRequired();
+            builder.Property(x=>x.apellidochofer).HasMaxLength(11).IsRequired();
+            builder.Property(x=>x.dni).HasMaxLength(11).IsRequired();
             
             
 

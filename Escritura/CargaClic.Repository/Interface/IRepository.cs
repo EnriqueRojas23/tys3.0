@@ -4,7 +4,6 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using CargaClic.Common;
 using CargaClic.Data;
-using CargaClic.Domain.Prerecibo;
 using CargaClic.Domain.Seguridad;
 
 namespace CargaClic.Data.Interface
@@ -19,6 +18,6 @@ namespace CargaClic.Data.Interface
          Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> predicate);
          Task<IEnumerable<T>> GetAll();
          Task<User> GetUser(int id);
-         Task<OrdenRecibo> GetMaxNumOrdenRecibo();
+        //  Task<OrdenRecibo> GetMaxNumOrdenRecibo();
     }
 }

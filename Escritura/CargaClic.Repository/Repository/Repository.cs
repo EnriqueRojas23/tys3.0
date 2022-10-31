@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using CargaClic.Common;
 using CargaClic.Data;
 using CargaClic.Data.Interface;
-using CargaClic.Domain.Prerecibo;
 using CargaClic.Domain.Seguridad;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
@@ -59,23 +58,7 @@ namespace CargaClic.Handlers.Seguridad
         {
             return await _context.SaveChangesAsync() > 0;
         }
-        public async Task<OrdenRecibo> GetMaxNumOrdenRecibo()
-        {
-            var parametros = new DynamicParameters();
-            // parametros.Add("idtipoproducto", dbType: DbType.Int64, direction: ParameterDirection.Input, value: parameters.idtipoproducto);
-            // parametros.Add("idnivelreparacion", dbType: DbType.Int64, direction: ParameterDirection.Input, value: parameters.idnivelreparacion);
-            // parametros.Add("idpartner", dbType: DbType.Int64, direction: ParameterDirection.Input, value: parameters.idpartner);
-
-
-            using (IDbConnection conn = Connection)
-            {
-                string sQuery = "[Recepcion].[pa_obtenerUltimaOrden]";
-                conn.Open();
-                //var result = await conn.QueryAsync<OrdenRecibo>(sQuery, new { id = id } );
-                var result2 = await conn.QueryAsync<OrdenRecibo>(sQuery, parametros ,commandType:CommandType.StoredProcedure);
-                return result2.FirstOrDefault();
-            }
-        }
+      
         public async Task<User> GetUser (int id)
         {
              var parametros = new DynamicParameters();

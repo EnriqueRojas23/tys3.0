@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using CargaClic.Data;
-using CargaClic.Domain.Mantenimiento;
 using CargaClic.Domain.Seguridad;
-using CargaClic.Handlers;
 using Newtonsoft.Json;
 
 namespace CargaClic.API.Data
@@ -45,16 +43,7 @@ namespace CargaClic.API.Data
             }
             _context.SaveChanges();
         }
-        public void SeedEstados()
-        {
-            var tablaData = System.IO.File.ReadAllText("Data/TablaSeedData.json");
-            var tables = JsonConvert.DeserializeObject<List<Tabla>>(tablaData);
-            foreach (var table in tables)
-            {
-                _context.Tablas.Add(table);
-            }
-            _context.SaveChanges();
-        }
+       
        
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

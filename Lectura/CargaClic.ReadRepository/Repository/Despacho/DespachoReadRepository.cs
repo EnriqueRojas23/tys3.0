@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
 using CargaClic.Data;
-using CargaClic.Domain.Despacho;
 using CargaClic.ReadRepository.Contracts.Despacho.Results;
 using CargaClic.ReadRepository.Interface.Despacho;
 
@@ -59,7 +57,7 @@ namespace CargaClic.ReadRepository.Repository.Despacho
 
             using (IDbConnection conn = Connection)
             {
-                string sQuery = "[Despacho].[obtener_ordenrecibodetalle]";
+                string sQuery = "[Despacho].[obtener_detalle]";
                 conn.Open();
                 var result = await conn.QueryAsync<GetAllOrdenSalidaDetalle>(sQuery,
                                                                            parametros
@@ -69,32 +67,7 @@ namespace CargaClic.ReadRepository.Repository.Despacho
             }
         }
 
-        public async Task<GetAllOrdenSalida> GetOrdenSalida(long OrdenSalidaId)
-        {
-            var parametros = new DynamicParameters();
-            parametros.Add("Id", dbType: DbType.Int64, direction: ParameterDirection.Input, value: OrdenSalidaId);
-            var result = new GetAllOrdenSalida();
-
-            using (IDbConnection conn = Connection)
-            {
-                var multiquery = await conn.QueryMultipleAsync
-                  (
-                      commandType: CommandType.StoredProcedure,
-                      sql: "Despacho.pa_obtener_ordensalida",
-                      param: parametros
-                  );
-
-                result = multiquery.Read<GetAllOrdenSalida>().LastOrDefault();
-                if (result != null)
-                {
-                    var detalleOrdenRecibo = multiquery.Read<GetAllOrdenSalidaDetalle>().ToList();
-                    result.Detalles = detalleOrdenRecibo;
-                }
-            }
-            return result;
-           
-
-        }
+       
         public async Task<IEnumerable<GetAllCargas>> GetAllCargas(int PropietarioId, int EstadoId)
         {
             var parametros = new DynamicParameters();
